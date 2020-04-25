@@ -5,9 +5,7 @@ RGB = imread('peppers.png');
 F = 255.*im2double(rgb2gray(RGB));
 subplot(2,2,1);
 imshow(F,'DisplayRange',[])
-title('Original Bild'); 
-
-hold on;
+title('Original Bild');
 
 [N,M] = size(F);
 
@@ -28,19 +26,16 @@ title('Transformiertes Bild');
 
 function [A,D,Dneu] = JPG(F)
     [N,M] = size(F);
-    A = F;
+    A = zeros(N,M);
     D = zeros(N,M);
     Dneu = zeros(N,M);
-    
-%     N = N/8;
-%     M = M/8;
-    
+
     sigma = loadSigma();
-        
+   
 
     for j=1:8:N
         for k=1:8:M
-            D(j:7+j,k:7+k) = DCT(A(j:7+j,k:7+k));
+            D(j:7+j,k:7+k) = DCT(F(j:7+j,k:7+k));
         end
     end
     
@@ -54,7 +49,7 @@ function [A,D,Dneu] = JPG(F)
     Y=1:1:8;
     for j=1:8:N
         for k=1:8:M
-            [A(j:7+j,k:7+k)]= TDCT(A(j:7+j,k:7+k),Dneu(j:7+j,k:7+k),X,Y);
+            [A(j:7+j,k:7+k)]= TDCT(F(j:7+j,k:7+k),Dneu(j:7+j,k:7+k),X,Y);
         end
     end
     
