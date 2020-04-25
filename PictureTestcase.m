@@ -14,11 +14,11 @@ hold on;
 [A,D,Dneu] = JPG(F);
 subplot(2,2,3);
 contour(D);
-title('Original Gewichte'); 
+title('Original Gewichte (contour Plot)'); 
 
 subplot(2,2,4);
 contour(Dneu);
-title('Optimierte Gewichte'); 
+title('Optimierte Gewichte (contour Plot)'); 
 
 subplot(2,2,2);
 imshow(A,'DisplayRange',[]);
