@@ -12,9 +12,7 @@ Yrec = 1/(2*Mreconst)*pi:2/(2*Mreconst)*pi:(1-1/(2*Mreconst))*pi;
 X = 1/(2*N)*pi:2/(2*N)*pi:(1-1/(2*N))*pi;
 Y = 1/(2*M)*pi:2/(2*M)*pi:(1-1/(2*M))*pi;
 
-
 F = zeros(N,M);
-
 
 for i=0:N-1
     for j=0:M-1
@@ -22,12 +20,12 @@ for i=0:N-1
     end
 end
 
-
 subplot(3,3,1);
 surf(F);
 
 D = DCT(F);
 subplot(3,3,2);
+% D(D==0) = nan;
 surf(D);
 
 A = TDCT(F,D,Xrec,Yrec);
@@ -66,8 +64,9 @@ surf(F);
 
 D = DCT(F);
 subplot(3,3,5);
+% D(D==0) = nan;
 surf(D);
-
+ 
 A = TDCT(F,D,Xrec,Yrec);
 subplot(3,3,6);
 surf(A);
