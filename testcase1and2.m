@@ -1,4 +1,7 @@
 clear all;
+%TODO Achsen scalieren
+
+
 
 %%Testcase1
 N = 20;
@@ -22,19 +25,19 @@ end
 
 subplot(3,3,1);
 surf(F);
+title('originale Funktion F1'); 
+
 
 D = DCT(F);
 subplot(3,3,2);
 % D(D==0) = nan;
 surf(D);
+title('Gewichte für Funktion F1'); 
 
 A = TDCT(F,D,Xrec,Yrec);
 subplot(3,3,3);
 surf(A);
-
-
-
-
+title('Rekonstruction Funktion F1'); 
 
 
 
@@ -61,15 +64,18 @@ end
 
 subplot(3,3,4);
 surf(F);
+title('originale Funktion F2'); 
 
 D = DCT(F);
 subplot(3,3,5);
 % D(D==0) = nan;
 surf(D);
- 
+title('Gewichte für Funktion F2'); 
+
 A = TDCT(F,D,Xrec,Yrec);
 subplot(3,3,6);
 surf(A);
+title('Rekonstruction Funktion F2'); 
 
 
 err = zeros(P_max);
@@ -98,6 +104,7 @@ end
 subplot(3,3,7);
 err(err==0) = nan;
 plot(err,'o');
+title('Maximaler Fehler für N Punkte F2'); 
 
 
 function z = test1(x,y)

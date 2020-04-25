@@ -5,6 +5,8 @@ RGB = imread('peppers.png');
 F = 255.*im2double(rgb2gray(RGB));
 subplot(2,2,1);
 imshow(F,'DisplayRange',[])
+title('Original Bild'); 
+
 hold on;
 
 [N,M] = size(F);
@@ -12,10 +14,15 @@ hold on;
 [A,D,Dneu] = JPG(F);
 subplot(2,2,3);
 contour(D);
+title('Original Gewichte'); 
+
 subplot(2,2,4);
 contour(Dneu);
+title('Optimierte Gewichte'); 
+
 subplot(2,2,2);
 imshow(A,'DisplayRange',[]);
+title('Transformiertes Bild'); 
 
 
 
